@@ -1,5 +1,5 @@
 // Número de teléfono de tu negocio (incluye el código de país, ej: 52 para México)
-const TELEFONO_WHATSAPP = "+52 1 662 445 2009";
+const TELEFONO_WHATSAPP = "526624452009";
 
 // 1. Catálogo de perfumes
 
@@ -374,7 +374,7 @@ function enviarPedidoWhatsApp() {
   mensaje += "¿Tienen disponibilidad para entrega?";
 
   const mensajeEncoded = encodeURIComponent(mensaje);
-  const url = `https://api.whatsapp.com/send?phone=${TELEFONO_WHATSAPP}&text=${mensajeEncoded}`;
+  const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${mensajeEncoded}`;
 
   window.open(url, '_blank');
 }

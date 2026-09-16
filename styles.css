@@ -1,149 +1,5 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-  background-color: #f8f9fa;
-  color: #333;
-}
-
-header {
-  background-color: #111;
-  color: #fff;
-  text-align: center;
-  padding: 2rem 1rem;
-}
-
-.contenedor-principal {
-  display: flex;
-  gap: 2rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.catalogo {
-  flex: 3;
-}
-
-.grid-productos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-
-.card-producto {
-  background: white;
-  border-radius: 8px;
-  padding: 1rem;
-  border: 1px solid #ddd;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card-producto img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.card-producto select, .card-producto button {
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  width: 100%;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.card-producto button {
-  background-color: #111;
-  color: white;
-  cursor: pointer;
-  border: none;
-}
-
-.card-producto button:hover {
-  background-color: #333;
-}
-
-.carrito-container {
-  flex: 1;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  height: fit-content;
-}
-
-.item-carrito {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.8rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #eee;
-}
-
-#btn-whatsapp {
-  width: 100%;
-  padding: 0.8rem;
-  background-color: #25D366;
-  color: white;
-  border: none;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 1rem;
-}
-
-#btn-whatsapp:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.imagen-container {
-  position: relative;
-}
-
-.badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  color: white;
-  text-transform: uppercase;
-}
-
-.badge.nuevo {
-  background-color: #28a745; /* Verde */
-}
-
-.badge.agotado {
-  background-color: #dc3545; /* Rojo */
-}
-
-/* Apariencia opaca si está agotado */
-.card-producto.producto-agotado {
-  opacity: 0.6;
-}
-
-.card-producto button:disabled {
-  background-color: #999;
-  cursor: not-allowed;
-}
-
 /* ===================================================
-   1. RESET Y ESTILOS GENERALES (Estilo App Móvil)
+   1. RESET Y BASE (Mobile First)
    =================================================== */
 * {
   box-sizing: border-box;
@@ -155,10 +11,9 @@ header {
 body {
   background-color: #f4f4f7;
   color: #1a1a1a;
-  padding-bottom: 80px; /* Espacio para que el carrito flotante no tape contenido */
 }
 
-/* Encabezado limpio */
+/* Encabezado */
 header {
   background-color: #0d0d0d;
   color: #ffffff;
@@ -168,9 +23,9 @@ header {
 }
 
 header h1 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 header p {
@@ -180,45 +35,59 @@ header p {
 }
 
 /* ===================================================
-   2. CONTENEDOR Y GRID DE PRODUCTOS (Adaptable)
+   2. ESTRUCTURA Y MÓVIL (Celular en 1 sola columna)
    =================================================== */
-main {
+.contenedor-principal, main {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 15px;
+  display: flex;
+  flex-direction: column; /* Carrito pasa abajo en celular */
+  gap: 25px;
 }
 
-/* En celular: 2 tarjetas por fila para aprovechar la pantalla */
-#grid-productos {
+.catalogo {
+  width: 100%;
+}
+
+.catalogo h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+/* Grid de Productos: 2 columnas en celulares */
+#grid-productos, .grid-productos {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
+  width: 100%;
 }
 
 /* Tarjeta de Producto */
 .card-producto {
   background: #ffffff;
-  border-radius: 12px;
-  padding: 12px;
+  border-radius: 10px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border: 1px solid #eee;
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e5e5;
+  text-align: left;
 }
 
-/* Imagen del perfume */
+/* Container para mantener la proporción de imagen en 1:1 */
 .imagen-container {
   position: relative;
   width: 100%;
-  padding-top: 100%; /* Proporción cuadrada 1:1 */
+  padding-top: 100%;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: #fafafa;
 }
 
-.imagen-container img {
+.imagen-container img, .card-producto img {
   position: absolute;
   top: 0;
   left: 0;
@@ -227,14 +96,14 @@ main {
   object-fit: cover;
 }
 
-/* Badges (¡Nuevo! / Agotado) */
+/* Etiquetas (Nuevo / Agotado) */
 .badge {
   position: absolute;
   top: 6px;
   left: 6px;
   font-size: 0.65rem;
   font-weight: bold;
-  padding: 3px 7px;
+  padding: 3px 6px;
   border-radius: 4px;
   z-index: 2;
   text-transform: uppercase;
@@ -250,168 +119,165 @@ main {
   color: #fff;
 }
 
+.card-producto.producto-agotado {
+  opacity: 0.65;
+}
+
 /* Textos dentro de la tarjeta */
 .card-producto h3 {
-  font-size: 0.95rem;
-  margin-top: 10px;
+  font-size: 0.9rem;
+  margin-top: 8px;
   line-height: 1.2;
 }
 
 .card-producto p small {
-  color: #777;
+  color: #666;
   font-size: 0.75rem;
 }
 
-/* Selectores y botones táctiles (grandes para el pulgar) */
+/* Selector y Botón */
 .card-producto select {
   width: 100%;
-  margin-top: 10px;
-  padding: 8px;
+  margin-top: 8px;
+  padding: 8px 4px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   background-color: #fff;
 }
 
 .card-producto button {
   width: 100%;
   margin-top: 8px;
-  padding: 10px;
+  padding: 10px 4px;
   background-color: #0d0d0d;
   color: #ffffff;
   border: none;
   border-radius: 6px;
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   cursor: pointer;
 }
 
-.card-producto button:active {
-  background-color: #333;
-}
-
 .card-producto button:disabled {
-  background-color: #ccc;
+  background-color: #bbb;
   cursor: not-allowed;
 }
 
-.producto-agotado {
-  opacity: 0.7;
-}
-
 /* ===================================================
-   3. SECCIÓN DEL CARRITO (Optimizado para móvil)
+   3. SECCIÓN DEL CARRITO (Móvil)
    =================================================== */
-#seccion-carrito {
+#seccion-carrito, .carrito-container {
+  width: 100%;
   background: #ffffff;
-  margin-top: 25px;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e5e5;
 }
 
-#seccion-carrito h2 {
-  font-size: 1.2rem;
+#seccion-carrito h2, .carrito-container h2 {
+  font-size: 1.1rem;
   margin-bottom: 12px;
   border-bottom: 1px solid #eee;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
 }
 
 .item-carrito {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 8px 0;
   border-bottom: 1px dashed #eee;
 }
 
 .item-carrito strong {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .item-carrito small {
   color: #666;
+  font-size: 0.75rem;
 }
 
 .item-carrito button {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 1.1rem;
-  padding: 5px;
+  font-size: 1rem;
+  padding: 4px;
 }
 
 .carrito-vacio {
   text-align: center;
   color: #888;
-  font-size: 0.9rem;
-  padding: 15px 0;
+  font-size: 0.85rem;
+  padding: 10px 0;
 }
 
-.total-contenedor {
+.resumen-carrito, .total-contenedor {
+  margin-top: 15px;
+}
+
+.resumen-carrito h3, .total-contenedor {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin: 15px 0;
 }
 
-/* Botón de WhatsApp destacado */
-.btn-whatsapp {
+#btn-whatsapp, .btn-whatsapp {
   width: 100%;
-  padding: 14px;
+  padding: 13px;
   background-color: #25d366;
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
   cursor: pointer;
 }
 
-.btn-whatsapp:disabled {
-  background-color: #cccccc;
+#btn-whatsapp:disabled, .btn-whatsapp:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
 }
 
 /* ===================================================
-   4. ADAPTABILIDAD PARA TABLETS Y COMPUTADORAS
+   4. ADAPTABILIDAD (Tablets y Laptops)
    =================================================== */
 
-/* Pantallas medianas (Tablets: mayores a 600px) */
+/* Tablets (pantallas > 600px) */
 @media (min-width: 600px) {
-  #grid-productos {
+  #grid-productos, .grid-productos {
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
 }
 
-/* Pantallas grandes (Laptops / Desktops: mayores a 900px) */
+/* Laptops / Desktops (pantallas > 900px) */
 @media (min-width: 900px) {
-  #grid-productos {
+  .contenedor-principal, main {
+    display: grid;
+    grid-template-columns: 2.8fr 1fr; /* Catálogo grande a la izquierda, Carrito a la derecha */
+    align-items: start;
+    gap: 25px;
+  }
+
+  #grid-productos, .grid-productos {
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 18px;
+  }
+
+  #seccion-carrito, .carrito-container {
+    position: sticky;
+    top: 20px;
   }
 
   .card-producto:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  }
-
-  /* Distribución en 2 columnas para pantalla grande: catálogo a la izquierda, carrito a la derecha */
-  main {
-    display: grid;
-    grid-template-columns: 2.5fr 1fr;
-    gap: 25px;
-    align-items: start;
-  }
-
-  #seccion-carrito {
-    position: sticky;
-    top: 20px;
-    margin-top: 0;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
   }
 }
