@@ -1,0 +1,417 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+header {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.contenedor-principal {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.catalogo {
+  flex: 3;
+}
+
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.card-producto {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-producto img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.card-producto select, .card-producto button {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.card-producto button {
+  background-color: #111;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+.card-producto button:hover {
+  background-color: #333;
+}
+
+.carrito-container {
+  flex: 1;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  height: fit-content;
+}
+
+.item-carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+#btn-whatsapp {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+#btn-whatsapp:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.imagen-container {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+}
+
+.badge.nuevo {
+  background-color: #28a745; /* Verde */
+}
+
+.badge.agotado {
+  background-color: #dc3545; /* Rojo */
+}
+
+/* Apariencia opaca si está agotado */
+.card-producto.producto-agotado {
+  opacity: 0.6;
+}
+
+.card-producto button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+/* ===================================================
+   1. RESET Y ESTILOS GENERALES (Estilo App Móvil)
+   =================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f4f7;
+  color: #1a1a1a;
+  padding-bottom: 80px; /* Espacio para que el carrito flotante no tape contenido */
+}
+
+/* Encabezado limpio */
+header {
+  background-color: #0d0d0d;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+header p {
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-top: 4px;
+}
+
+/* ===================================================
+   2. CONTENEDOR Y GRID DE PRODUCTOS (Adaptable)
+   =================================================== */
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+/* En celular: 2 tarjetas por fila para aprovechar la pantalla */
+#grid-productos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* Tarjeta de Producto */
+.card-producto {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eee;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Imagen del perfume */
+.imagen-container {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Proporción cuadrada 1:1 */
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.imagen-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Badges (¡Nuevo! / Agotado) */
+.badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 3px 7px;
+  border-radius: 4px;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+.badge.nuevo {
+  background-color: #25d366;
+  color: #fff;
+}
+
+.badge.agotado {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+/* Textos dentro de la tarjeta */
+.card-producto h3 {
+  font-size: 0.95rem;
+  margin-top: 10px;
+  line-height: 1.2;
+}
+
+.card-producto p small {
+  color: #777;
+  font-size: 0.75rem;
+}
+
+/* Selectores y botones táctiles (grandes para el pulgar) */
+.card-producto select {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.85rem;
+  background-color: #fff;
+}
+
+.card-producto button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px;
+  background-color: #0d0d0d;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.card-producto button:active {
+  background-color: #333;
+}
+
+.card-producto button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.producto-agotado {
+  opacity: 0.7;
+}
+
+/* ===================================================
+   3. SECCIÓN DEL CARRITO (Optimizado para móvil)
+   =================================================== */
+#seccion-carrito {
+  background: #ffffff;
+  margin-top: 25px;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+#seccion-carrito h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.item-carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.item-carrito strong {
+  font-size: 0.9rem;
+}
+
+.item-carrito small {
+  color: #666;
+}
+
+.item-carrito button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 5px;
+}
+
+.carrito-vacio {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  padding: 15px 0;
+}
+
+.total-contenedor {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+/* Botón de WhatsApp destacado */
+.btn-whatsapp {
+  width: 100%;
+  padding: 14px;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.btn-whatsapp:disabled {
+  background-color: #cccccc;
+}
+
+/* ===================================================
+   4. ADAPTABILIDAD PARA TABLETS Y COMPUTADORAS
+   =================================================== */
+
+/* Pantallas medianas (Tablets: mayores a 600px) */
+@media (min-width: 600px) {
+  #grid-productos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+/* Pantallas grandes (Laptops / Desktops: mayores a 900px) */
+@media (min-width: 900px) {
+  #grid-productos {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .card-producto:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Distribución en 2 columnas para pantalla grande: catálogo a la izquierda, carrito a la derecha */
+  main {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 25px;
+    align-items: start;
+  }
+
+  #seccion-carrito {
+    position: sticky;
+    top: 20px;
+    margin-top: 0;
+  }
+}
