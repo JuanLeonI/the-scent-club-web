@@ -1,5 +1,5 @@
 // Número de teléfono de tu negocio (formato internacional sin signos ni espacios)
-const TELEFONO_WHATSAPP = "662420369";
+const TELEFONO_WHATSAPP = "526624203689";
 
 // 1. Catálogo de perfumes
 const productos = [
