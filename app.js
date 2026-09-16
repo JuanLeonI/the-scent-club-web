@@ -1,8 +1,7 @@
-// Número de teléfono de tu negocio (incluye el código de país, ej: 52 para México)
+// Número de teléfono de tu negocio (formato internacional sin signos ni espacios)
 const TELEFONO_WHATSAPP = "526624452009";
 
 // 1. Catálogo de perfumes
-
 const productos = [
   {
     id: 1,
@@ -250,21 +249,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const contenedor = document.getElementById("grid-productos");
   if (!contenedor) return;
 
-  // Limpiar el contenedor antes de renderizar para evitar duplicados
   contenedor.innerHTML = "";
 
   productos.forEach(prod => {
     let badgeHTML = "";
     let esAgotado = prod.estado === "agotado";
 
-    // Validar etiqueta según estado
     if (prod.estado === "nuevo") {
       badgeHTML = `<span class="badge nuevo">¡Nuevo!</span>`;
     } else if (esAgotado) {
       badgeHTML = `<span class="badge agotado">Agotado</span>`;
     }
 
-    // Generar las opciones del selector (si no está agotado)
     let opcionesHTML = "";
     if (!esAgotado) {
       opcionesHTML = prod.opciones.map((op, index) => 
@@ -306,7 +302,6 @@ function agregarAlCarrito(idProducto) {
 
   if (!opcionSeleccionada) return;
 
-  // Agregar al array
   carrito.push({
     nombre: producto.nombre,
     tamano: opcionSeleccionada.tamano,
@@ -314,13 +309,20 @@ function agregarAlCarrito(idProducto) {
   });
 
   actualizarCarritoUI();
+  mostrarNotificacion(`¡${producto.nombre} agregado!`);
 }
 
-// 4. Actualizar la interfaz del carrito
+// 4. Actualizar la interfaz del carrito y contador flotante
 function actualizarCarritoUI() {
   const itemsContainer = document.getElementById("items-carrito");
   const totalElemento = document.getElementById("total-precio");
   const btnWhatsApp = document.getElementById("btn-whatsapp");
+  const contadorFlotante = document.getElementById("contador-flotante");
+
+  // Actualizar contador flotante móvil si existe
+  if (contadorFlotante) {
+    contadorFlotante.innerText = carrito.length;
+  }
 
   if (!itemsContainer || !totalElemento) return;
 
@@ -377,4 +379,24 @@ function enviarPedidoWhatsApp() {
   const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${mensajeEncoded}`;
 
   window.open(url, '_blank');
+}
+
+// 7. Funciones auxiliares para el Toast Notificación y el Botón Flotante
+function mostrarNotificacion(mensaje) {
+  const toast = document.getElementById("notificacion");
+  if (!toast) return;
+
+  toast.innerText = mensaje;
+  toast.classList.add("visible");
+
+  setTimeout(() => {
+    toast.classList.remove("visible");
+  }, 2000);
+}
+
+function irAlCarrito() {
+  const seccionCarrito = document.getElementById("seccion-carrito") || document.querySelector(".carrito-container");
+  if (seccionCarrito) {
+    seccionCarrito.scrollIntoView({ behavior: "smooth" });
+  }
 }
