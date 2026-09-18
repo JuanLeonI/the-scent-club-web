@@ -9,8 +9,13 @@
 <body>
 
   <header>
-    <h1>The Scent Club | Pesqueira</h1>
-    <p>Decants de Perfumería Árabe</p>
+    <div class="logo-container">
+      <img src="img/logo.png" alt="The Scent Club Logo" class="logo-header">
+      <div class="header-texto">
+        <h1>The Scent Club | Pesqueira</h1>
+        <p>Decants de Perfumería Árabe</p>
+      </div>
+    </div>
   </header>
 
   <main class="contenedor-principal">
@@ -36,12 +41,14 @@
   </main>
 
   <script src="app.js"></script>
+  
   <!-- Notificación flotante (Toast) -->
-<div id="notificacion" class="notificacion-toast">¡Producto agregado al carrito!</div>
+  <div id="notificacion" class="notificacion-toast">¡Producto agregado al carrito!</div>
 
-<!-- Botón flotante para ver el carrito en móvil -->
-<button id="btn-carrito-flotante" onclick="irAlCarrito()">
-  🛒 (<span id="contador-flotante">0</span>)
-</button>
+  <!-- Botón flotante para ver el carrito en móvil -->
+  <button id="btn-carrito-flotante" onclick="irAlCarrito()">
+    🛒 (<span id="contador-flotante">0</span>)
+  </button>
+
 </body>
 </html>
