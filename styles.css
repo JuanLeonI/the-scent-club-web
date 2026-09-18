@@ -263,7 +263,7 @@ header {
    4. ELEMENTOS FLOTANTES
    =================================================== */
 
-/* Botón flotante para móvil (fijo arriba a la derecha) */
+/* Botón flotante para móvil (siempre visible arriba a la derecha) */
 #btn-carrito-flotante {
   position: fixed !important;
   top: 15px !important;
@@ -283,18 +283,8 @@ header {
   display: flex !important;
   align-items: center !important;
   gap: 6px !important;
-  
-  /* Estado inicial oculto si usas scroll en app.js */
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transform: translateY(-10px) !important;
-  transition: opacity 0.3s ease, transform 0.3s ease !important;
-}
-
-#btn-carrito-flotante.visible {
-  opacity: 1 !important;
+  opacity: 1 !important; /* Visible de inmediato */
   pointer-events: auto !important;
-  transform: translateY(0) !important;
 }
 
 #contador-flotante {
