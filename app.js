@@ -238,6 +238,18 @@ const productos = [
       { tamano: "5 ml", precio: 65 },
       { tamano: "10 ml", precio: 110 }
     ]
+  },
+  {
+    id: 22,
+    nombre: "Hawas Private Luceo",
+    marca: "Rasasi",
+    imagen: "img/hawas-luceo.avif", 
+    estado: "nuevo",
+    opciones: [
+      { tamano: "3 ml", precio: 65 },
+      { tamano: "5 ml", precio: 95 },
+      { tamano: "10 ml", precio: 175 }
+    ]
   }
 ];
 
@@ -373,7 +385,12 @@ function enviarPedidoWhatsApp() {
   });
 
   mensaje += `\n*Total a pagar:* $${total} MXN\n\n`;
-  mensaje += "¿Tienen disponibilidad para entrega?";
+  mensaje += "¿Tienen disponibilidad para entrega?\n\n";
+  
+  // Invitación al Canal de WhatsApp agregada al final
+  mensaje += " *¡Únete a nuestro Canal exclusivo!*\n";
+  mensaje += "Entérate antes que nadie de promociones, nuevos lanzamientos y días de ruleta de descuentos:\n";
+  mensaje += "https://whatsapp.com/channel/0029Vb95qGN1NCrL6kdtGO07";
 
   const mensajeEncoded = encodeURIComponent(mensaje);
   const url = `https://wa.me/${TELEFONO_WHATSAPP}?text=${mensajeEncoded}`;
