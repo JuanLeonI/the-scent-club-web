@@ -250,7 +250,19 @@ const productos = [
       { tamano: "5 ml", precio: 95 },
       { tamano: "10 ml", precio: 175 }
     ]
-  }
+  },
+  {
+    id: 23,
+    nombre: "Club de Nuit Untold",
+    marca: "Armaf",
+    imagen: "img/cdn-untold.avif",
+    estado: "nuevo",
+    opciones: [
+      { tamano: "3 ml", precio: 55 },
+      { tamano: "5 ml", precio: 80 },
+      { tamano: "10 ml", precio: 140 }
+    ]
+  },
 ];
 
 // Carrito de compras en memoria
