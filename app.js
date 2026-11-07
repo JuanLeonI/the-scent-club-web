@@ -8,7 +8,7 @@ const productos = [
     nombre: "Rasasi Hawas Ice",
     marca: "Rasasi",
     imagen: "img/hawas-ice.avif",
-    estado: "disponible",
+    estado: "agotado",
     opciones: [
       { tamano: "3 ml", precio: 50 },
       { tamano: "5 ml", precio: 75 },
@@ -52,7 +52,7 @@ const productos = [
     nombre: "Rasasi Hawas Fire",
     marca: "Rasasi",
     imagen: "img/hawas-fire.avif",
-    estado: "nuevo",
+    estado: "disponible",
     opciones: [
       { tamano: "3 ml", precio: 55 },
       { tamano: "5 ml", precio: 80 },
